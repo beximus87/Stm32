@@ -39,49 +39,5 @@ int main(void)
   TIM2->CR1 |= TIM_CR1_CEN;   // Start count
   NVIC_EnableIRQ(TIM2_IRQn);  // Enable IRQ
   //GPIOC -> BSRR |= GPIO_BSRR_BS_8;
-
-;
 }
  
-
-
-/*
-
-void TIM2_IRQHandler(void) //Функция обработчика прерывания от таймера 6
-  {
-    TIM2->SR &= ~TIM_SR_UIF; //Сбрасываем бит вызова прерывания. 
-    GPIOC->ODR ^= GPIO_ODR_9;//Инвертируем состояние вывода - зажигаем/гасим светодиод
-  }
-int main()
-{
-  NVIC_SetPriority(TIM2_IRQn, 1); //Приоритет прерывания
-  NVIC_EnableIRQ(TIM2_IRQn); //Разрешаем обработку прерывания от таймера 2
-  
-  RCC->AHBENR |= RCC_AHBENR_GPIOCEN; //Тактирование порта C
-  GPIOC->MODER |= GPIO_MODER_MODER9_0;//Вывод PC8 порта C - выход 
-    RCC -> APB2ENR |= RCC_APB2ENR_TIM15EN;
-
-    TIM15->SMCR &= ~ TIM_SMCR_SMS;
-
-    TIM15 -> CR1 = TIM_CR1_CEN;
-
-    TIM15->PSC = 719;
-    TIM15->ARR = 24999;
-
-    TIM15->DIER |= TIM_DIER_UIE;
-
-
-    NVIC_EnableIRQ (TIM15_IRQn);
-
-}
-// USER CODE BEGIN 15 
-
-void TIM15_UP_IRQHandler(void) {
-
-      
-    GPIOC->ODR ^=  GPIO_ODR_9;
-    TIM15->SR &= ~ TIM_SR_UIF;
-}
-
-*/
-
